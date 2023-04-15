@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'another_screen.dart';
 
 class ImageScreen extends StatelessWidget {
   const ImageScreen({Key? key}) : super(key: key);
@@ -9,11 +10,25 @@ class ImageScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Image Screen'),
       ),
-      body: Container(
-        color: Colors.blue,
-        child: const Center(
-          child: Text('This is another screen.'),
-        ),
+      body: GridView.count(
+        crossAxisCount: 4,
+        children: List.generate(16, (index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AnotherScreen()),
+              );
+            },
+            child: Container(
+              color: Colors.blue,
+              margin: const EdgeInsets.all(4.0),
+              child: const Center(
+
+              ),
+            ),
+          );
+        }),
       ),
     );
   }
